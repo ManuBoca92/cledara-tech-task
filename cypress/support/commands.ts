@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('getRandomElement', (elements: number): number => {
+    return Math.floor(Math.random() * elements);
+})
+
+Cypress.Commands.add('interceptPageRequest', (): any => {
+    return cy.intercept('https://widget.fitanalytics.com/widget/api/products?platform=*');
+})

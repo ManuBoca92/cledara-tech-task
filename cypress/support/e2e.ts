@@ -13,8 +13,30 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+
+/// <reference types="cypress" />
+
 // Import commands.js using ES2015 syntax:
 import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  })
+
+declare global {
+    namespace Cypress {
+      interface Chainable {
+        /**
+         * Custom command to select DOM element by data-cy attribute.
+         * @example cy.dataCy('greeting')
+         */
+         getRandomElement(value: number): number
+         interceptPageRequest(): Chainable<Element>
+      }
+    }
+  }
