@@ -1,6 +1,6 @@
 # Cledara
 
-Cypress was chosen as the test framework of choice for this task, because I wanted to use a different test framework from the ones currently suggested in the task. I implemented the test framework using a component page object model. CPOM is a model that I was recently introduced to and decided to experiment with it on this task).
+Cypress was chosen as the test framework of choice for this task. The test is run on Holland & Barret site.
 
 ## Setup
 

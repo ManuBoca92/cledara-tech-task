@@ -12,6 +12,8 @@ export const getTotalPrice = (): Cypress.Chainable<JQuery<HTMLElement>> => {
   return cy.get(basketSelectors.totalPrice);
 };
 
-export const getProductPriceFromBasket = (): Cypress.Chainable<JQuery<HTMLElement>> => {
+export const getProductPriceFromBasket = (): Cypress.Chainable<
+  JQuery<HTMLElement>
+> => {
   return cy.get(basketSelectors.productPrice);
 };

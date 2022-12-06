@@ -11,13 +11,12 @@ import {
 } from '../../utils/productPage/productPage';
 
 describe('Checkout Flow Tests on Holland & Barrett', () => {
-  before('prepares environment', () => {
-    const event = new Date();
-    cy.setCookie('OptanonAlertBoxClosed', event.toISOString());
+  before('prepare environment', () => {
+    cy.setCookie('OptanonAlertBoxClosed', 'true');
     cy.setCookie('hbi-cookie-consent', 'ALL');
   });
 
-  it('checkout product from vitamins and supplements page', () => {
+  it('checkout a random product from vitamins and supplements page', () => {
     interceptRequest().as('page');
     cy.visit('/shop/vitamins-supplements/vitamins-supplements-shop-all/');
 
