@@ -1,8 +1,8 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from 'cypress';
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://www.asos.com',
+    baseUrl: 'https://www.hollandandbarrett.com/',
     viewportHeight: 1200,
     viewportWidth: 1500,
     defaultCommandTimeout: 10000,
@@ -10,6 +10,6 @@ module.exports = defineConfig({
     waitForAnimations: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
-    },
-  },
+    }
+  }
 });

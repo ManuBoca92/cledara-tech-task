@@ -1,6 +1,30 @@
 {
+  "name": "cledara-tech-task",
+  "description": "Cledara Test Automation Engineer Task",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "cypress open",
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManuBoca92/cledara-tech-task.git"
+  },
+  "author": "Ebonom N. Mfam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManuBoca92/cledara-tech-task/issues"
+  },
+  "homepage": "https://github.com/ManuBoca92/cledara-tech-task#readme",
   "devDependencies": {
     "cypress": "^11.2.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "@typescript-eslint/parser": "^5.30.4",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "prettier": "^2.7.1"
   }
 }
