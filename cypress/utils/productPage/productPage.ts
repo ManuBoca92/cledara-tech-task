@@ -1,9 +1,9 @@
-import { productPageSelectors } from "./selectors"
+import { productPageSelectors } from './selectors';
 
-export const clickAddToBag = () => {
-    cy.get(productPageSelectors.addToCartButton).click()
-}
+export const clickAddToBasket = (): void => {
+  cy.get(productPageSelectors.addToCartButton).click();
+};
 
-export const hoverOnCartIcon = () => {
-    cy.get(productPageSelectors.cartIcon).invoke('show')
-}
+export const getProductPrice = (): Cypress.Chainable<JQuery<HTMLElement>> => {
+  return cy.get(productPageSelectors.productPrice);
+};

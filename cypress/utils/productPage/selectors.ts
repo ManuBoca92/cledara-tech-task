@@ -1,4 +1,4 @@
 export enum productPageSelectors {
-    addToCartButton = '[data-testid="add-button"]',
-    cartIcon =  '[data-testid="miniBagIcon"]'
+  addToCartButton = '[data-test="add-to-basket"]',
+  productPrice = '[data-test="price"]'
 }
