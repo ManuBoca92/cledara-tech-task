@@ -2,6 +2,10 @@
 
 Cypress was chosen as the test framework of choice for this task. The test is run on Holland & Barret site.
 
+### CI/CD
+
+I used Github Actions as the CI/CD tool.
+
 ## Setup
 
 To run this test, follow these steps, please make sure you have **node** and **yarn** installed on your local machine then follow these steps;
