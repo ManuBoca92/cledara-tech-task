@@ -3,7 +3,7 @@
   "description": "Cledara Test Automation Engineer Task",
   "version": "1.0.0",
   "scripts": {
-    "test": "cypress run",
+    "test": "cypress run --browser chrome",
     "cypress:open": "cypress open",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",

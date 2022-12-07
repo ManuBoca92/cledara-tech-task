@@ -5,7 +5,7 @@ module.exports = defineConfig({
     baseUrl: 'https://www.hollandandbarrett.com/',
     viewportHeight: 1200,
     viewportWidth: 1500,
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 30000,
     requestTimeout: 20000,
     waitForAnimations: true,
     reporter: 'mochawesome',
