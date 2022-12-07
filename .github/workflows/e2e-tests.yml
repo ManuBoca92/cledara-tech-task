@@ -1,0 +1,24 @@
+name: E2E Tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install a project with a clean slate
+        run: |
+          rm -rf node_modules && yarn install --frozen-lockfile
+      - name: Run e2e tests
+        run: yarn run test
+      - name: Merge test results into one
+        run: yarn report:merge
+      - name: Generate HTML report
+        run: yarn report:generate
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./mochawesome-report

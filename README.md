@@ -2,6 +2,10 @@
 
 Cypress was chosen as the test framework of choice for this task. The test is run on Holland & Barret site.
 
+### CI/CD
+
+I used Github Actions as the CI/CD tool.
+
 ## Setup
 
 To run this test, follow these steps, please make sure you have **node** and **yarn** installed on your local machine then follow these steps;
@@ -32,3 +36,11 @@ If you are opening Cypress for the first time on the this project, then follow t
 - Select `E2E Testing`.
 - Select the browser of your choice e.g `Chrome`.
 - Click on `Start E2E Tesing in Chrome` button.
+
+## Test report
+
+I used mochawesome html reporterer for this project.
+To generate test report after running tests, you will need to run these commands
+`yarn run report:merge`
+`yarn run report:generate`
+Test reports can be found locally in `mochawesome-report/output.html`.
