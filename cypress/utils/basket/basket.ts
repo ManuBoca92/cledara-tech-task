@@ -17,3 +17,7 @@ export const getProductPriceFromBasket = (): Cypress.Chainable<
 > => {
   return cy.get(basketSelectors.productPrice);
 };
+
+export const getBasketCount = (): Cypress.Chainable<JQuery<HTMLElement>> => {
+  return cy.get(basketSelectors.basketCount);
+};

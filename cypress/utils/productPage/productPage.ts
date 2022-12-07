@@ -7,3 +7,7 @@ export const clickAddToBasket = (): void => {
 export const getProductPrice = (): Cypress.Chainable<JQuery<HTMLElement>> => {
   return cy.get(productPageSelectors.productPrice);
 };
+
+export const getProductTitle = (): Cypress.Chainable<JQuery<HTMLElement>> => {
+  return cy.get(productPageSelectors.productTitle);
+};

@@ -1,39 +1,64 @@
-import { interceptRequest } from '../../utils/intercepts';
+import {
+  interceptRequest,
+  interceptOptimizelyRequest
+} from '../../utils/intercepts';
 import { clickOnRandomProductCard } from '../../utils/catalogPage/catalogPage';
 import {
   clickCartIcon,
   getProductPriceFromBasket,
-  getTotalPrice
+  getTotalPrice,
+  getBasketCount
 } from '../../utils/basket/basket';
 import {
   clickAddToBasket,
-  getProductPrice
+  getProductPrice,
+  getProductTitle
 } from '../../utils/productPage/productPage';
 
 describe('Checkout Flow Tests on Holland & Barrett', () => {
-  before('prepare environment', () => {
-    cy.setCookie('OptanonAlertBoxClosed', 'true');
-    cy.setCookie('hbi-cookie-consent', 'ALL');
-  });
-
-  it('checkout a random product from vitamins and supplements page', () => {
+  beforeEach('', () => {
+    cy.addCookies();
     interceptRequest().as('page');
     cy.visit('/shop/vitamins-supplements/vitamins-supplements-shop-all/');
-
     cy.wait('@page');
+  });
 
-    // click on a product
+  it('verify that a user can add a product to cart', function () {
     clickOnRandomProductCard();
-    cy.wait('@page');
+
+    interceptOptimizelyRequest().as('event');
+    clickAddToBasket();
+    cy.wait('@event');
+
+    // verify product has been added to cart
+    getBasketCount().should('be.visible');
+  });
+
+  it('verify that a product added to basket exists in cart', function () {
+    clickOnRandomProductCard();
+
+    getProductTitle()
+      .invoke('text')
+      .then((productTitle) => {
+        clickAddToBasket();
+        clickCartIcon();
+
+        // verify that user is in checkout page
+        cy.url().should('include', '/basket');
+
+        // verify that product exists is checkout page
+        cy.contains(productTitle).should('be.visible');
+      });
+  });
+
+  it('checkout a random product from vitamins and supplements page', function () {
+    clickOnRandomProductCard();
 
     getProductPrice()
       .invoke('text')
       .then((priceInProductPage) => {
         clickAddToBasket();
-
-        // click on basket icon
         clickCartIcon();
-        cy.wait('@page');
 
         // verify that product price displayed in cart matches price in product page
         getProductPriceFromBasket().should('have.text', priceInProductPage);

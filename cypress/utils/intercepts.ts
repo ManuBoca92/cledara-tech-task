@@ -5,7 +5,9 @@ and on local or CI envs.
 */
 
 export const interceptRequest = (): any => {
-  return cy.intercept(
-    'https://www.hollandandbarrett.com/api/p13n-recs/categories?*'
-  );
+  return cy.intercept('https://www.hollandandbarrett.com/api/p13n-recs/*');
+};
+
+export const interceptOptimizelyRequest = (): any => {
+  return cy.intercept('https://logx.optimizely.com/v1/events*');
 };
