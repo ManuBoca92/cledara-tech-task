@@ -8,7 +8,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v4 # use the explicit version number
+      - name: Install a project with a clean slate
+        run: |
+          npm ci
+      - name: Run e2e tests
+        run: yarn run test
+      - name: Merge test results into one
+        run: yarn report:merge
+      - name: Generate HTML report
+        run: yarn report:generate
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./mochawesome-report
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
